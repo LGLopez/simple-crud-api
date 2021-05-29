@@ -1,5 +1,5 @@
 const handleShow = (db) => (req, res) => {
-    db.select('name', 'joke', 'by_user', 'created_at')
+    db.select('id','name', 'joke', 'by_user', 'created_at')
         .from('jokes')
         .then(jokes => {
             res.send(jokes)
