@@ -4,6 +4,9 @@ const knex = require('knex');
 
 const PORT = 3001;
 
+const insert = require('./controllers/insert');
+const show = require('./controllers/show')
+
 const db = knex({
     client: 'pg',
     connection: {
@@ -23,6 +26,8 @@ app.get('/', (req, res) => {
     res.send('Succed!');
 })
 
+app.put('/insert/data', insert.handleInsert(db));
+app.get('/show', show.handleShow(db));
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
