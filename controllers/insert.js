@@ -1,5 +1,10 @@
 const handleInsert = (db) => (req, res) => {
     const {name, joke, by_user} = req.body;
+
+    if(!name || !joke || !by_user){
+        return res.status(400).json('incorrect sumbission');
+    }
+
     db('jokes')
         .insert({
             name: name,
@@ -9,7 +14,7 @@ const handleInsert = (db) => (req, res) => {
         })
         .then(joke => res.json(joke[0]))
         .catch(err => res.status(400).json('Unable to add new joke'))
-    res.send(`Joke from ${by_user} added succesfully`)
+    res.send({data: `Joke from ${by_user} added succesfully`})
 }
 
 module.exports = {

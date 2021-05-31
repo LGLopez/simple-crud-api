@@ -21,7 +21,7 @@ const db = knex({
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Succed!');
@@ -31,6 +31,6 @@ app.put('/insert/data', insert.handleInsert(db));
 app.get('/show', show.handleShow(db));
 app.delete('/delete', del.handleDelete(db));
 
-app.listen(PORT, () => {
+app.listen(PORT,() => {
     console.log(`Listening on port ${PORT}`);
 })
