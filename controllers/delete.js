@@ -3,8 +3,8 @@ const handleDelete = (db) => (req, res) => {
     db('jokes')
         .where('id', id)
         .del()
-        .then(() => res.send('Deleted succesfully'))
-        .catch((error) => res.status(400).send('Error deleting'))
+        .then(() => res.json({result: id}))
+        .catch((error) => res.status(400).json({result: 'Error deleting'}))
 }
 
 module.exports = {
